@@ -1,0 +1,66 @@
+name: Zoho Sheet Plans and Pricing
+description: Zoho Sheet is included as part of the Zoho Workplace suite. The following plans govern access to Zoho Sheet and its API capabilities.
+url: https://www.zoho.com/workplace/pricing.html
+plans:
+
+  - name: Mail Free
+    description: Forever-free plan for small teams of up to 5 users. Includes Zoho Sheet with basic spreadsheet capabilities. No custom domain email.
+    url: https://www.zoho.com/workplace/pricing.html
+    price: 0.00
+    currency: USD
+    unit: user/month
+    usersIncluded: 5
+    features:
+      - Zoho Sheet access (web)
+      - 5 GB mail storage per user
+      - Basic collaboration
+      - No API access documented
+
+  - name: Workplace Standard
+    description: Best-value plan for growing teams. Includes full Zoho Sheet with collaboration, AI assistant (Zia), and developer eWidget space for API integrations.
+    url: https://www.zoho.com/workplace/pricing.html
+    price: 3.00
+    currency: USD
+    unit: user/month
+    billing: annual
+    features:
+      - Zoho Sheet with full collaboration
+      - 30 GB mail storage per user
+      - 100 GB team WorkDrive (3-10 users)
+      - AI assistant (Zia)
+      - eWidget and Developer Space
+      - Zoho Sheet Data API access
+      - OAuth 2.0 API authentication
+      - SAML-based SSO
+
+  - name: Workplace Professional
+    description: Advanced plan for larger organizations. Includes all Standard features plus enhanced storage, intranet, and employee engagement tools.
+    url: https://www.zoho.com/workplace/pricing.html
+    price: 6.00
+    currency: USD
+    unit: user/month
+    billing: annual
+    features:
+      - All Standard features
+      - 100 GB mail storage per user
+      - 100 GB retention storage per user
+      - 1 TB team WorkDrive
+      - Intranet and employee engagement tools
+      - Advanced admin controls
+      - Full Zoho Sheet Data API access
+
+  - name: Workplace Enterprise
+    description: Custom enterprise plan with dedicated infrastructure, advanced security, and custom limits. Contact sales for pricing.
+    url: https://www.zoho.com/workplace/pricing.html
+    price: 0.00
+    currency: USD
+    unit: custom
+    billing: annual
+    features:
+      - All Professional features
+      - Virtual Private Cloud
+      - Active Directory sync
+      - Advanced security controls
+      - Custom storage and user limits
+      - Full Zoho Sheet Data API access
+      - Enterprise support

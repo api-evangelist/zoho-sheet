@@ -1,0 +1,53 @@
+name: Zoho Sheet FinOps
+description: Financial operations guidance for managing costs when using Zoho Sheet and its Data API. Zoho Sheet is bundled within Zoho Workplace plans with no per-API-call charges.
+url: https://www.zoho.com/workplace/pricing.html
+
+pricingModel:
+  type: subscription
+  billingCycle: annual
+  perCallCharges: false
+  notes: >
+    Zoho Sheet API access is included with Zoho Workplace subscriptions. There are no
+    separate per-API-call charges or metered billing for the Data API. Costs are
+    driven entirely by the number of user seats and the chosen Workplace plan tier.
+
+costDrivers:
+  - name: User Seats
+    description: The primary cost driver. Each active user on a Zoho Workplace plan incurs a per-user monthly fee billed annually.
+    unit: user/month
+    tiers:
+      - plan: Standard
+        price: 3.00
+        currency: USD
+      - plan: Professional
+        price: 6.00
+        currency: USD
+      - plan: Enterprise
+        price: custom
+
+  - name: Storage Overages
+    description: Storage is bundled per plan. Overages may incur additional costs; check Zoho Workplace pricing for add-on storage rates.
+    notes: Contact Zoho sales for overage pricing.
+
+costOptimization:
+  - name: Annual Billing Discount
+    description: Choosing annual billing over monthly billing provides approximately 20% savings across plan tiers.
+    savingsPercent: 20
+
+  - name: Right-Size User Seats
+    description: Only purchase seats for active users. Zoho Workplace allows mixing plan tiers for different user groups, enabling cost optimization by assigning lower-tier plans to users who only need basic Zoho Sheet access.
+
+  - name: Free Tier for Small Teams
+    description: Teams of up to 5 users can use Zoho Sheet for free under the Mail Free plan, with no API access fees, making it zero-cost for small integrations or prototyping.
+
+  - name: No Per-Call Metering
+    description: Because Zoho Sheet API has no daily or monthly call limits and no per-call billing, API usage itself does not increase costs. Rate limits are purely a throttling mechanism, not a cost gating mechanism.
+
+monitoring:
+  - name: Zoho Workplace Admin Console
+    description: Monitor active user counts and storage consumption via the Zoho Workplace admin console to track cost-driving resources.
+    url: https://workplace.zoho.com/
+
+  - name: API Error Code Tracking
+    description: Monitor for error code 2950 (rate limit exceeded) in API responses to identify over-eager clients and optimize request patterns before they impact service availability.
+    errorCode: 2950

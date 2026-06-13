@@ -1,0 +1,47 @@
+name: Zoho Sheet API Rate Limits
+description: Rate limiting policy for the Zoho Sheet Data API v2. There are no daily or monthly usage caps, but per-minute limits apply per document to protect server stability.
+url: https://sheet.zoho.com/help/api/v2/
+limits:
+
+  - name: Per-Minute API Call Limit
+    description: Each API endpoint has a per-minute call threshold. Limits vary by endpoint and cannot be increased on request. Exceeding the limit suspends API access to that specific document for 5 minutes.
+    unit: requests/minute
+    scope: per-document, per-endpoint
+    errorCode: 2950
+    throttleDuration: 5 minutes
+    canBeIncreased: false
+
+  - name: Daily API Call Limit
+    description: No daily usage limit is currently enforced for the Zoho Sheet Data API.
+    unit: requests/day
+    value: unlimited
+    notes: Subject to change in future API versions.
+
+  - name: Monthly API Call Limit
+    description: No monthly usage limit is currently enforced for the Zoho Sheet Data API.
+    unit: requests/month
+    value: unlimited
+    notes: Subject to change in future API versions.
+
+  - name: Access Token Validity
+    description: OAuth 2.0 access tokens are valid for up to one hour after creation.
+    unit: seconds
+    value: 3600
+
+  - name: Concurrent Refresh Tokens
+    description: A maximum of 20 concurrent refresh tokens are allowed per client application. When this limit is exceeded, the oldest token is automatically deleted.
+    unit: tokens
+    value: 20
+
+  - name: Access Token Generation Rate
+    description: A maximum of 10 access tokens can be generated per 10-minute window per client.
+    unit: tokens per 10 minutes
+    value: 10
+
+workbookLimits:
+  - name: Maximum Columns per Workbook
+    value: 256
+  - name: Maximum Rows per Worksheet
+    value: 65536
+  - name: Maximum Cells per Workbook
+    value: 2000000

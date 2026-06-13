@@ -1,0 +1,59 @@
+aid: zoho-sheet
+name: Zoho Sheet
+description: Online spreadsheet application with a REST API for reading, writing, and manipulating spreadsheet data, cells, formulas, and exporting to various formats. The Zoho Sheet Data API v2 supports workbook management, worksheet operations, cell content manipulation, chart management, tabular data operations, pivot tables, and merge templates. Authentication uses OAuth 2.0 with scopes for read and update access.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/zoho-sheet/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Spreadsheets
+  - Productivity
+  - Collaboration
+  - Data
+  - Office
+  - Zoho
+apis:
+  - aid: zoho-sheet:zoho-sheet-data-api
+    name: Zoho Sheet Data API
+    description: REST API for reading, writing, and manipulating Zoho Sheet spreadsheet data, cells, formulas, workbooks, worksheets, charts, pivot tables, and tabular data. Uses OAuth 2.0 for authentication and POST requests to a resource-based URL scheme.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://sheet.zoho.com/help/api/v2/
+    baseURL: https://sheet.zoho.com/api/v2
+    tags:
+      - Spreadsheets
+      - Data
+      - Workbooks
+      - Worksheets
+      - Charts
+    properties:
+      - type: Documentation
+        url: https://sheet.zoho.com/help/api/v2/
+      - type: Authentication
+        url: https://sheet.zoho.com/help/api/v2/
+common:
+  - type: Website
+    url: https://www.zoho.com/sheet/
+  - type: Documentation
+    url: https://sheet.zoho.com/help/api/v2/
+  - type: GitHubOrg
+    url: https://github.com/zoho
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/zoho-corporation/
+  - type: Blog
+    url: https://www.zoho.com/blog/sheet
+  - type: Pricing
+    url: https://www.zoho.com/workplace/pricing.html
+  - type: StatusPage
+    url: https://us.zohostatus.com/
+  - type: X
+    url: https://x.com/zoho
+  - type: Plans
+    url: plans/zoho-sheet-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/zoho-sheet-rate-limits.yml
+  - type: FinOps
+    url: finops/zoho-sheet-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
