@@ -31,6 +31,8 @@ apis:
         url: https://sheet.zoho.com/help/api/v2/
       - type: Authentication
         url: https://sheet.zoho.com/help/api/v2/
+      - type: OpenAPI
+        url: openapi/openapi.yml
 common:
   - type: Website
     url: https://www.zoho.com/sheet/

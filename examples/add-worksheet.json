@@ -1,0 +1,34 @@
+{
+  "title": "Add Worksheet",
+  "description": "Example request and response for adding a new worksheet to a Zoho Sheet workbook using the worksheet.create method",
+  "request": {
+    "method": "POST",
+    "url": "https://sheet.zoho.com/api/v2/eqnikb96fd4ad13d541bc8fc77ba2bb36cc6",
+    "headers": {
+      "Authorization": "Zoho-oauthtoken 1000.8cb99dxxx9d0.8d9dd33f"
+    },
+    "body": {
+      "method": "worksheet.create",
+      "new_sheet_name": "Q2 Data",
+      "sheet_index": 2
+    }
+  },
+  "response": {
+    "status": "success",
+    "spreadsheet_name": "Sales Data Q1 2024",
+    "worksheet_list": [
+      {
+        "sheet_name": "Sheet1",
+        "sheet_index": 0
+      },
+      {
+        "sheet_name": "Summary",
+        "sheet_index": 1
+      },
+      {
+        "sheet_name": "Q2 Data",
+        "sheet_index": 2
+      }
+    ]
+  }
+}

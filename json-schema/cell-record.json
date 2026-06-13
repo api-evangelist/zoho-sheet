@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zoho-sheet/main/json-schema/cell-record.json",
+  "title": "Zoho Sheet Cell Record",
+  "description": "A single row of spreadsheet data returned as a key-value object where keys are column header names",
+  "type": "object",
+  "additionalProperties": {
+    "type": ["string", "number", "boolean", "null"],
+    "description": "Cell value; key is the column header name from the header row"
+  },
+  "examples": [
+    {
+      "Name": "Alice Smith",
+      "Email": "alice@example.com",
+      "Score": "95",
+      "Active": "true",
+      "Joined": "2024-01-15"
+    }
+  ]
+}

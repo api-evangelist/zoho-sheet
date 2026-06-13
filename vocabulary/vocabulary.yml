@@ -1,0 +1,58 @@
+vocabulary:
+  - term: resource_id
+    definition: The unique identifier for a Zoho Sheet workbook (spreadsheet file). Found in the spreadsheet URL and used as the path parameter in all Data API requests.
+    example: eqnikb96fd4ad13d541bc8fc77ba2bb36cc6
+
+  - term: workbook
+    definition: A Zoho Sheet spreadsheet file containing one or more worksheets. Equivalent to a file in the Zoho Sheet application. Identified by a resource_id.
+
+  - term: worksheet
+    definition: A single sheet (tab) within a Zoho Sheet workbook. A workbook can contain multiple worksheets, each with a unique name and index position.
+
+  - term: header_row
+    definition: The row number (1-indexed) within a worksheet that contains column header names. Defaults to 1. The Data API uses header names as keys in the returned JSON records.
+
+  - term: cell_data
+    definition: A JSON-encoded array of objects representing rows to be written to a worksheet. Each object's keys correspond to column header names from the header_row.
+
+  - term: method
+    definition: The form parameter that specifies which Data API operation to perform. All requests are POST to the resource URL, and the method parameter selects the operation (e.g., worksheet.records.fetch, worksheet.records.add).
+
+  - term: access_token
+    definition: An OAuth 2.0 bearer token used to authenticate API requests via the Authorization header (format - "Zoho-oauthtoken <token>"). Expires after approximately 3600 seconds (1 hour).
+
+  - term: refresh_token
+    definition: A long-lived OAuth 2.0 token used to obtain new access tokens without re-authorization. A maximum of 20 active refresh tokens are allowed per application.
+
+  - term: scope
+    definition: OAuth 2.0 permission level granted to an application. ZohoSheet.dataAPI.READ allows read operations; ZohoSheet.dataAPI.UPDATE allows write/update operations.
+
+  - term: tabular_range
+    definition: A structured table within a worksheet that has defined headers and supports filtered, sorted data access. Accessed via tabular_range.records.* methods.
+
+  - term: pivot_table
+    definition: A data summarization tool within Zoho Sheet that aggregates values from a data range and presents them by row and column dimensions.
+
+  - term: merge_template
+    definition: A Zoho Sheet feature that combines spreadsheet data with a document template to produce output files (PDF, DOCX, XLSX) with data merged into template placeholders.
+
+  - term: chart
+    definition: A visual data representation within a Zoho Sheet worksheet. Charts can be created, updated, and queried via the Data API.
+
+  - term: criteria
+    definition: A JSON-encoded filter expression used in tabular data operations to select specific rows matching given conditions (column name, operator, value).
+
+  - term: ZohoSheet.dataAPI.READ
+    definition: OAuth 2.0 scope granting read-only access to Zoho Sheet workbook data via the Data API.
+
+  - term: ZohoSheet.dataAPI.UPDATE
+    definition: OAuth 2.0 scope granting write and update access to Zoho Sheet workbook data via the Data API.
+
+  - term: error_code
+    definition: A numeric code in the API error response identifying the type of failure. Common codes include 2401 (auth failure), 2862 (workbook not found), 2863 (worksheet not found), 2950 (rate limit exceeded).
+
+  - term: sheet_index
+    definition: The zero-indexed position of a worksheet within its workbook. The first worksheet has index 0.
+
+  - term: data_range
+    definition: A cell range notation (e.g., A1:D20) specifying which cells to include in a chart or other range-based operation.

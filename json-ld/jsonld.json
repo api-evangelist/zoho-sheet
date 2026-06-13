@@ -1,0 +1,111 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "zohosheet": "https://sheet.zoho.com/api/v2/",
+    "apiVersion": "schema:version",
+    "provider": "schema:provider",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "documentation": "schema:documentation",
+    "resource_id": "zohosheet:resource_id",
+    "worksheet_name": "zohosheet:worksheet_name",
+    "header_row": "zohosheet:header_row",
+    "records": "zohosheet:records",
+    "total_row_count": "zohosheet:total_row_count",
+    "worksheet_list": "zohosheet:worksheet_list",
+    "sheet_index": "zohosheet:sheet_index",
+    "status": "zohosheet:status",
+    "error_code": "zohosheet:error_code",
+    "error_message": "zohosheet:error_message"
+  },
+  "@type": "WebAPI",
+  "name": "Zoho Sheet Data API",
+  "description": "REST API for reading, writing, and manipulating Zoho Sheet spreadsheet data, cells, formulas, workbooks, worksheets, charts, pivot tables, and tabular data. Uses OAuth 2.0 for authentication.",
+  "url": "https://sheet.zoho.com/api/v2",
+  "documentation": "https://sheet.zoho.com/help/api/v2/",
+  "apiVersion": "v2",
+  "provider": {
+    "@type": "Organization",
+    "name": "Zoho Corporation",
+    "url": "https://www.zoho.com/",
+    "sameAs": [
+      "https://github.com/zoho",
+      "https://www.linkedin.com/company/zoho-corporation/",
+      "https://x.com/zoho"
+    ]
+  },
+  "termsOfService": "https://www.zoho.com/terms.html",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.zoho.com/workplace/pricing.html"
+  },
+  "potentialAction": [
+    {
+      "@type": "Action",
+      "name": "worksheet.records.fetch",
+      "description": "Read records from a worksheet",
+      "target": "https://sheet.zoho.com/api/v2/{resource_id}"
+    },
+    {
+      "@type": "Action",
+      "name": "worksheet.records.add",
+      "description": "Add new records to a worksheet",
+      "target": "https://sheet.zoho.com/api/v2/{resource_id}"
+    },
+    {
+      "@type": "Action",
+      "name": "worksheet.records.update",
+      "description": "Update existing records in a worksheet",
+      "target": "https://sheet.zoho.com/api/v2/{resource_id}"
+    },
+    {
+      "@type": "Action",
+      "name": "worksheet.create",
+      "description": "Add a new worksheet to a workbook",
+      "target": "https://sheet.zoho.com/api/v2/{resource_id}"
+    },
+    {
+      "@type": "Action",
+      "name": "worksheet.rename",
+      "description": "Rename an existing worksheet",
+      "target": "https://sheet.zoho.com/api/v2/{resource_id}"
+    },
+    {
+      "@type": "Action",
+      "name": "worksheet.delete",
+      "description": "Delete a worksheet from a workbook",
+      "target": "https://sheet.zoho.com/api/v2/{resource_id}"
+    },
+    {
+      "@type": "Action",
+      "name": "tabular_range.records.fetch",
+      "description": "Read tabular range records with optional filtering and sorting",
+      "target": "https://sheet.zoho.com/api/v2/{resource_id}"
+    },
+    {
+      "@type": "Action",
+      "name": "tabular_range.records.add",
+      "description": "Add new rows to a tabular range",
+      "target": "https://sheet.zoho.com/api/v2/{resource_id}"
+    },
+    {
+      "@type": "Action",
+      "name": "tabular_range.records.update",
+      "description": "Update rows in a tabular range matching criteria",
+      "target": "https://sheet.zoho.com/api/v2/{resource_id}"
+    },
+    {
+      "@type": "Action",
+      "name": "tabular_range.records.delete",
+      "description": "Delete rows in a tabular range matching criteria",
+      "target": "https://sheet.zoho.com/api/v2/{resource_id}"
+    },
+    {
+      "@type": "Action",
+      "name": "workbook.data.get",
+      "description": "Get workbook metadata including worksheet list",
+      "target": "https://sheet.zoho.com/api/v2/{resource_id}"
+    }
+  ]
+}

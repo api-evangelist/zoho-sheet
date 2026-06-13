@@ -1,0 +1,48 @@
+{
+  "title": "Read Worksheet Records",
+  "description": "Example request and response for reading records from a Zoho Sheet worksheet using the worksheet.records.fetch method",
+  "request": {
+    "method": "POST",
+    "url": "https://sheet.zoho.com/api/v2/eqnikb96fd4ad13d541bc8fc77ba2bb36cc6",
+    "headers": {
+      "Authorization": "Zoho-oauthtoken 1000.8cb99dxxx9d0.8d9dd33f"
+    },
+    "body": {
+      "method": "worksheet.records.fetch",
+      "worksheet_name": "Sheet1",
+      "header_row": 1,
+      "start_row_index": 1,
+      "row_count": 10
+    }
+  },
+  "response": {
+    "status": "success",
+    "spreadsheet_name": "Sales Data Q1 2024",
+    "worksheet_name": "Sheet1",
+    "header_row": 1,
+    "records": [
+      {
+        "Name": "Alice Smith",
+        "Email": "alice@example.com",
+        "Region": "North",
+        "Sales": "45200",
+        "Quarter": "Q1"
+      },
+      {
+        "Name": "Bob Jones",
+        "Email": "bob@example.com",
+        "Region": "South",
+        "Sales": "38700",
+        "Quarter": "Q1"
+      },
+      {
+        "Name": "Carol White",
+        "Email": "carol@example.com",
+        "Region": "East",
+        "Sales": "52100",
+        "Quarter": "Q1"
+      }
+    ],
+    "total_row_count": 3
+  }
+}

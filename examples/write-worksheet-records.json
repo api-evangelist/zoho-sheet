@@ -1,0 +1,24 @@
+{
+  "title": "Write Worksheet Records",
+  "description": "Example request and response for adding new records to a Zoho Sheet worksheet using the worksheet.records.add method",
+  "request": {
+    "method": "POST",
+    "url": "https://sheet.zoho.com/api/v2/eqnikb96fd4ad13d541bc8fc77ba2bb36cc6",
+    "headers": {
+      "Authorization": "Zoho-oauthtoken 1000.8cb99dxxx9d0.8d9dd33f"
+    },
+    "body": {
+      "method": "worksheet.records.add",
+      "worksheet_name": "Sheet1",
+      "header_row": 1,
+      "cell_data": "[{\"Name\":\"Dave Brown\",\"Email\":\"dave@example.com\",\"Region\":\"West\",\"Sales\":\"41500\",\"Quarter\":\"Q1\"},{\"Name\":\"Eve Davis\",\"Email\":\"eve@example.com\",\"Region\":\"North\",\"Sales\":\"49800\",\"Quarter\":\"Q1\"}]"
+    }
+  },
+  "response": {
+    "status": "success",
+    "spreadsheet_name": "Sales Data Q1 2024",
+    "worksheet_name": "Sheet1",
+    "header_row": 1,
+    "total_row_count": 5
+  }
+}

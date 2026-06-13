@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zoho-sheet/main/json-schema/api-response.json",
+  "title": "Zoho Sheet API Response",
+  "description": "Standard response envelope returned by the Zoho Sheet Data API v2",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["success", "failure"],
+      "description": "Indicates whether the operation succeeded or failed"
+    },
+    "spreadsheet_name": {
+      "type": "string",
+      "description": "Name of the spreadsheet involved in the operation"
+    },
+    "worksheet_name": {
+      "type": "string",
+      "description": "Name of the worksheet involved (for worksheet-scoped operations)"
+    },
+    "header_row": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Header row index (1-indexed) used in the operation"
+    },
+    "records": {
+      "type": "array",
+      "description": "Array of data records returned by read operations",
+      "items": {
+        "$ref": "cell-record.json"
+      }
+    },
+    "total_row_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of data rows in the worksheet (excluding header)"
+    },
+    "worksheet_list": {
+      "type": "array",
+      "description": "List of worksheets in the workbook (returned by workbook operations)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sheet_name": {
+            "type": "string"
+          },
+          "sheet_index": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "error_code": {
+      "type": "integer",
+      "description": "Numeric error code (present when status is failure)"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Human-readable error description (present when status is failure)"
+    }
+  },
+  "required": ["status"],
+  "if": {
+    "properties": {
+      "status": { "const": "failure" }
+    }
+  },
+  "then": {
+    "required": ["error_code", "error_message"]
+  }
+}

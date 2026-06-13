@@ -1,0 +1,25 @@
+{
+  "title": "OAuth 2.0 Token Exchange",
+  "description": "Example request and response for exchanging an authorization code for an access token using Zoho OAuth 2.0",
+  "request": {
+    "method": "POST",
+    "url": "https://accounts.zoho.com/oauth/v2/token",
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    "body": {
+      "code": "1000.dd7f8f2ea887b6af3a7b082a2ff2ba7d.a7d51a4a3f81c6d6776b3f6baee84da4",
+      "client_id": "1000.ABC123",
+      "client_secret": "abc123secretvalue",
+      "redirect_uri": "https://yourapp.example.com/callback",
+      "grant_type": "authorization_code"
+    }
+  },
+  "response": {
+    "access_token": "1000.8cb99dxxxxx0.8d9dd33f",
+    "refresh_token": "1000.xxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxx",
+    "api_domain": "https://www.zohoapis.com",
+    "token_type": "Bearer",
+    "expires_in": 3600
+  }
+}

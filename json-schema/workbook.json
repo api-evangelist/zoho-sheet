@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zoho-sheet/main/json-schema/workbook.json",
+  "title": "Zoho Sheet Workbook",
+  "description": "Represents a Zoho Sheet workbook (spreadsheet file) and its metadata",
+  "type": "object",
+  "properties": {
+    "resource_id": {
+      "type": "string",
+      "description": "Unique identifier for the workbook used in API requests"
+    },
+    "spreadsheet_name": {
+      "type": "string",
+      "description": "Display name of the spreadsheet"
+    },
+    "worksheet_list": {
+      "type": "array",
+      "description": "List of worksheets contained in the workbook",
+      "items": {
+        "$ref": "#/$defs/worksheet"
+      }
+    },
+    "created_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the workbook was created"
+    },
+    "modified_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the workbook was last modified"
+    }
+  },
+  "required": ["resource_id", "spreadsheet_name"],
+  "$defs": {
+    "worksheet": {
+      "title": "Worksheet",
+      "description": "A single sheet (tab) within a Zoho Sheet workbook",
+      "type": "object",
+      "properties": {
+        "sheet_name": {
+          "type": "string",
+          "description": "Display name of the worksheet"
+        },
+        "sheet_index": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Zero-indexed position of the worksheet in the workbook"
+        },
+        "row_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of rows containing data"
+        },
+        "column_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of columns containing data"
+        }
+      },
+      "required": ["sheet_name", "sheet_index"]
+    }
+  }
+}
