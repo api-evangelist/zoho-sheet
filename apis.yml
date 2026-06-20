@@ -1,7 +1,7 @@
 aid: zoho-sheet
 name: Zoho Sheet
 description: Online spreadsheet application with a REST API for reading, writing, and manipulating spreadsheet data, cells, formulas, and exporting to various formats. The Zoho Sheet Data API v2 supports workbook management, worksheet operations, cell content manipulation, chart management, tabular data operations, pivot tables, and merge templates. Authentication uses OAuth 2.0 with scopes for read and update access.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/zoho-sheet/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -17,7 +17,7 @@ apis:
   - aid: zoho-sheet:zoho-sheet-data-api
     name: Zoho Sheet Data API
     description: REST API for reading, writing, and manipulating Zoho Sheet spreadsheet data, cells, formulas, workbooks, worksheets, charts, pivot tables, and tabular data. Uses OAuth 2.0 for authentication and POST requests to a resource-based URL scheme.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://sheet.zoho.com/help/api/v2/
     baseURL: https://sheet.zoho.com/api/v2
     tags:
