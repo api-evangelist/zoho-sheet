@@ -1,0 +1,27 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+  - implicit
+schemes:
+- name: oauthToken
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.zoho.com/oauth/v2/auth
+    tokenUrl: https://accounts.zoho.com/oauth/v2/token
+    scopes: 2
+  - flow: implicit
+    authorizationUrl: https://accounts.zoho.com/oauth/v2/auth
+    scopes: 2
+  - flow: clientCredentials
+    tokenUrl: https://accounts.zoho.com/oauth/v3/device/token
+    scopes: 2
+  description: Zoho OAuth 2.0 authentication
+  sources:
+  - openapi/openapi.yml

@@ -34,6 +34,10 @@ apis:
       - type: OpenAPI
         url: openapi/openapi.yml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/zoho-sheet-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/zoho-sheet-domain-security.yml
   - type: Authentication
     url: authentication/zoho-sheet-authentication.yml
   - type: OAuthScopes
