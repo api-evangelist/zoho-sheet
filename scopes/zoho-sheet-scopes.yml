@@ -1,0 +1,32 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openapi.yml
+schemes:
+- name: oauthToken
+  source: openapi/openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.zoho.com/oauth/v2/auth
+    tokenUrl: https://accounts.zoho.com/oauth/v2/token
+  - flow: implicit
+    authorizationUrl: https://accounts.zoho.com/oauth/v2/auth
+  - flow: clientCredentials
+    tokenUrl: https://accounts.zoho.com/oauth/v3/device/token
+  description: Zoho OAuth 2.0 authentication
+scopes:
+- scope: ZohoSheet.dataAPI.READ
+  description: Read spreadsheet data
+  flows:
+  - authorizationCode
+  - clientCredentials
+  - implicit
+  sources:
+  - openapi/openapi.yml
+- scope: ZohoSheet.dataAPI.UPDATE
+  description: Write and update spreadsheet data
+  flows:
+  - authorizationCode
+  - clientCredentials
+  - implicit
+  sources:
+  - openapi/openapi.yml
