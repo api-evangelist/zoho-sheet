@@ -1,0 +1,14 @@
+{
+  "provider": "zoho-sheet",
+  "sources": [
+    "zoho-sheet-workbook-api-openapi.yml"
+  ],
+  "outputs": [
+    "zoho-sheet-workbook-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

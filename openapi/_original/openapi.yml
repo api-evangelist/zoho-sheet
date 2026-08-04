@@ -1,0 +1,473 @@
+openapi: 3.0.3
+info:
+  title: Zoho Sheet Data API
+  description: >
+    REST API for reading, writing, and manipulating Zoho Sheet spreadsheet data.
+    Supports workbook management, worksheet operations, cell content manipulation,
+    chart management, tabular data operations, pivot tables, and merge templates.
+    Authentication uses OAuth 2.0 with scopes for read and update access.
+    All data API requests use POST with a method parameter to specify the operation.
+  version: v2
+  contact:
+    name: Zoho Sheet Support
+    url: https://sheet.zoho.com/help/api/v2/
+  termsOfService: https://www.zoho.com/terms.html
+  license:
+    name: Zoho API Terms
+    url: https://www.zoho.com/terms.html
+externalDocs:
+  description: Zoho Sheet Data API v2 Documentation
+  url: https://sheet.zoho.com/help/api/v2/
+servers:
+  - url: https://sheet.zoho.com/api/v2
+    description: Zoho Sheet API server (US)
+  - url: https://sheet.zoho.eu/api/v2
+    description: Zoho Sheet API server (EU)
+  - url: https://sheet.zoho.com.au/api/v2
+    description: Zoho Sheet API server (AU)
+  - url: https://sheet.zoho.in/api/v2
+    description: Zoho Sheet API server (IN)
+security:
+  - oauthToken: []
+tags:
+  - name: Workbook
+    description: Operations on Zoho Sheet workbooks (spreadsheet files)
+  - name: Worksheet
+    description: Operations on worksheets (tabs/sheets) within a workbook
+  - name: Cell Content
+    description: Reading and writing cell data, formulas, and formatting
+  - name: Chart
+    description: Chart creation and management within spreadsheets
+  - name: Tabular Data
+    description: Row/column tabular data operations
+  - name: Pivot Table
+    description: Pivot table creation and management
+  - name: Merge Template
+    description: Merge template operations for document generation
+  - name: Utility
+    description: Utility and helper API operations
+paths:
+  /{resource_id}:
+    post:
+      summary: Zoho Sheet Data API dispatcher
+      description: >
+        All Zoho Sheet Data API operations are dispatched via POST to the resource URL.
+        The specific operation is controlled by the `method` form parameter.
+        The resource_id is the unique identifier of the spreadsheet (workbook).
+      operationId: dispatchSheetOperation
+      tags:
+        - Workbook
+      parameters:
+        - name: resource_id
+          in: path
+          required: true
+          description: Unique identifier of the Zoho Sheet workbook (resource_id from the spreadsheet URL)
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/ReadSpreadsheetRequest'
+                - $ref: '#/components/schemas/WriteSpreadsheetRequest'
+                - $ref: '#/components/schemas/GetSpreadsheetContentRequest'
+                - $ref: '#/components/schemas/AddWorksheetRequest'
+                - $ref: '#/components/schemas/RenameWorksheetRequest'
+                - $ref: '#/components/schemas/DeleteWorksheetRequest'
+                - $ref: '#/components/schemas/ReadTabularDataRequest'
+                - $ref: '#/components/schemas/WriteTabularDataRequest'
+      responses:
+        '200':
+          description: Successful API response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Bad request - missing or invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - invalid or expired OAuth token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden - insufficient scope or permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded - API calls blocked for 5 minutes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - oauthToken: ['ZohoSheet.dataAPI.READ']
+components:
+  securitySchemes:
+    oauthToken:
+      type: oauth2
+      description: Zoho OAuth 2.0 authentication
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.zoho.com/oauth/v2/auth
+          tokenUrl: https://accounts.zoho.com/oauth/v2/token
+          refreshUrl: https://accounts.zoho.com/oauth/v2/token
+          scopes:
+            ZohoSheet.dataAPI.READ: Read spreadsheet data
+            ZohoSheet.dataAPI.UPDATE: Write and update spreadsheet data
+        implicit:
+          authorizationUrl: https://accounts.zoho.com/oauth/v2/auth
+          scopes:
+            ZohoSheet.dataAPI.READ: Read spreadsheet data
+            ZohoSheet.dataAPI.UPDATE: Write and update spreadsheet data
+        clientCredentials:
+          tokenUrl: https://accounts.zoho.com/oauth/v3/device/token
+          scopes:
+            ZohoSheet.dataAPI.READ: Read spreadsheet data
+            ZohoSheet.dataAPI.UPDATE: Write and update spreadsheet data
+  schemas:
+    ReadSpreadsheetRequest:
+      type: object
+      description: Request parameters for reading spreadsheet cell data
+      required:
+        - method
+        - worksheet_name
+      properties:
+        method:
+          type: string
+          enum: [worksheet.records.fetch]
+          description: API method identifier for reading worksheet records
+        worksheet_name:
+          type: string
+          description: Name of the worksheet to read from
+        header_row:
+          type: integer
+          description: Row number to treat as header (1-indexed)
+          default: 1
+        start_row_index:
+          type: integer
+          description: Row index to start reading from (1-indexed)
+        row_count:
+          type: integer
+          description: Number of rows to read
+        start_column_index:
+          type: integer
+          description: Column index to start reading from (1-indexed)
+        column_count:
+          type: integer
+          description: Number of columns to read
+    WriteSpreadsheetRequest:
+      type: object
+      description: Request parameters for writing cell data to a spreadsheet
+      required:
+        - method
+        - worksheet_name
+        - cell_data
+      properties:
+        method:
+          type: string
+          enum: [worksheet.records.add, worksheet.records.update]
+          description: API method identifier for writing worksheet records
+        worksheet_name:
+          type: string
+          description: Name of the worksheet to write to
+        header_row:
+          type: integer
+          description: Row number treated as header (1-indexed)
+          default: 1
+        cell_data:
+          type: string
+          description: JSON string array of row data objects to write
+    GetSpreadsheetContentRequest:
+      type: object
+      description: Request parameters for getting spreadsheet content/metadata
+      required:
+        - method
+      properties:
+        method:
+          type: string
+          enum: [workbook.data.get]
+          description: API method identifier for getting workbook content
+        worksheet_name:
+          type: string
+          description: Optional worksheet name to filter content
+    AddWorksheetRequest:
+      type: object
+      description: Request parameters for adding a new worksheet
+      required:
+        - method
+        - new_sheet_name
+      properties:
+        method:
+          type: string
+          enum: [worksheet.create]
+          description: API method identifier for creating a worksheet
+        new_sheet_name:
+          type: string
+          description: Name for the new worksheet
+        sheet_index:
+          type: integer
+          description: Position index for the new worksheet
+    RenameWorksheetRequest:
+      type: object
+      description: Request parameters for renaming a worksheet
+      required:
+        - method
+        - old_sheet_name
+        - new_sheet_name
+      properties:
+        method:
+          type: string
+          enum: [worksheet.rename]
+          description: API method identifier for renaming a worksheet
+        old_sheet_name:
+          type: string
+          description: Current name of the worksheet
+        new_sheet_name:
+          type: string
+          description: New name for the worksheet
+    DeleteWorksheetRequest:
+      type: object
+      description: Request parameters for deleting a worksheet
+      required:
+        - method
+        - worksheet_name
+      properties:
+        method:
+          type: string
+          enum: [worksheet.delete]
+          description: API method identifier for deleting a worksheet
+        worksheet_name:
+          type: string
+          description: Name of the worksheet to delete
+    ReadTabularDataRequest:
+      type: object
+      description: Request parameters for reading tabular (structured) data
+      required:
+        - method
+        - worksheet_name
+      properties:
+        method:
+          type: string
+          enum: [tabular_range.records.fetch]
+          description: API method identifier for fetching tabular range records
+        worksheet_name:
+          type: string
+          description: Name of the worksheet containing the tabular data
+        criteria:
+          type: string
+          description: JSON string filter criteria for rows
+        sort_column:
+          type: string
+          description: Column name to sort results by
+        sort_order:
+          type: string
+          enum: [asc, desc]
+          description: Sort order direction
+        start_row_index:
+          type: integer
+          description: Starting row index for pagination
+        row_count:
+          type: integer
+          description: Number of rows to return for pagination
+    WriteTabularDataRequest:
+      type: object
+      description: Request parameters for writing tabular data
+      required:
+        - method
+        - worksheet_name
+        - json_data
+      properties:
+        method:
+          type: string
+          enum: [tabular_range.records.add, tabular_range.records.update, tabular_range.records.delete]
+          description: API method identifier for modifying tabular range records
+        worksheet_name:
+          type: string
+          description: Name of the worksheet containing the tabular data
+        json_data:
+          type: string
+          description: JSON string of row data to add or update
+        criteria:
+          type: string
+          description: JSON string filter criteria identifying rows to update or delete
+    ApiResponse:
+      type: object
+      description: Standard successful response from Zoho Sheet Data API
+      properties:
+        status:
+          type: string
+          enum: [success, failure]
+          description: Indicates whether the operation succeeded
+        spreadsheet_name:
+          type: string
+          description: Name of the spreadsheet
+        worksheet_name:
+          type: string
+          description: Name of the worksheet (for worksheet-scoped operations)
+        header_row:
+          type: integer
+          description: Header row index used for the operation
+        records:
+          type: array
+          description: Array of data records returned by read operations
+          items:
+            type: object
+            additionalProperties: true
+        total_row_count:
+          type: integer
+          description: Total number of data rows in the worksheet
+        worksheet_list:
+          type: array
+          description: List of worksheet names in the workbook
+          items:
+            type: object
+            properties:
+              sheet_name:
+                type: string
+              sheet_index:
+                type: integer
+    ErrorResponse:
+      type: object
+      description: Error response from Zoho Sheet Data API
+      properties:
+        status:
+          type: string
+          enum: [failure]
+          description: Always "failure" for error responses
+        error_code:
+          type: integer
+          description: Numeric error code
+          example: 2862
+        error_message:
+          type: string
+          description: Human-readable error description
+      example:
+        status: failure
+        error_code: 2862
+        error_message: Workbook not found
+    WorkbookMetadata:
+      type: object
+      description: Metadata about a Zoho Sheet workbook
+      properties:
+        resource_id:
+          type: string
+          description: Unique identifier for the workbook
+        spreadsheet_name:
+          type: string
+          description: Display name of the spreadsheet
+        worksheet_list:
+          type: array
+          description: List of worksheets in the workbook
+          items:
+            $ref: '#/components/schemas/WorksheetMetadata'
+    WorksheetMetadata:
+      type: object
+      description: Metadata about a worksheet within a workbook
+      properties:
+        sheet_name:
+          type: string
+          description: Display name of the worksheet
+        sheet_index:
+          type: integer
+          description: Zero-indexed position of the worksheet
+        row_count:
+          type: integer
+          description: Total number of rows with data
+        column_count:
+          type: integer
+          description: Total number of columns with data
+    CellRecord:
+      type: object
+      description: A single row of spreadsheet data as key-value pairs
+      additionalProperties:
+        type: string
+      example:
+        Name: Alice Smith
+        Email: alice@example.com
+        Score: "95"
+    ChartRequest:
+      type: object
+      description: Request parameters for chart operations
+      required:
+        - method
+        - worksheet_name
+      properties:
+        method:
+          type: string
+          enum: [chart.create, chart.update, chart.delete, chart.data.get]
+          description: API method identifier for chart operations
+        worksheet_name:
+          type: string
+          description: Worksheet containing the chart data
+        chart_name:
+          type: string
+          description: Name/identifier of the chart
+        chart_type:
+          type: string
+          description: Type of chart (bar, line, pie, etc.)
+        data_range:
+          type: string
+          description: Cell range for chart data (e.g. A1:D10)
+    PivotTableRequest:
+      type: object
+      description: Request parameters for pivot table operations
+      required:
+        - method
+        - worksheet_name
+      properties:
+        method:
+          type: string
+          enum: [pivot.create, pivot.update, pivot.delete, pivot.data.get]
+          description: API method identifier for pivot table operations
+        worksheet_name:
+          type: string
+          description: Worksheet containing the pivot table
+        pivot_name:
+          type: string
+          description: Name/identifier of the pivot table
+        rows:
+          type: string
+          description: JSON array of row field names for the pivot
+        columns:
+          type: string
+          description: JSON array of column field names for the pivot
+        values:
+          type: string
+          description: JSON array of value field configurations
+    MergeTemplateRequest:
+      type: object
+      description: Request parameters for merge template operations
+      required:
+        - method
+        - worksheet_name
+      properties:
+        method:
+          type: string
+          enum: [merge_template.export]
+          description: API method identifier for merge template export
+        worksheet_name:
+          type: string
+          description: Worksheet used as the data source for the merge
+        export_format:
+          type: string
+          enum: [pdf, docx, xlsx]
+          description: Output format for the merged document
+        template_id:
+          type: string
+          description: Identifier of the template to merge with
