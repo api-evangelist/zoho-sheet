@@ -1,0 +1,708 @@
+{
+  "item": [
+    {
+      "id": "94eac6e5-3e21-458e-b3fc-0be83a882a4c",
+      "name": "Workbook",
+      "description": {
+        "content": "Operations on Zoho Sheet workbooks (spreadsheet files)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a27ccc7-8e65-4347-a841-db13bf3517e5",
+          "name": "Zoho Sheet Data API dispatcher",
+          "request": {
+            "name": "Zoho Sheet Data API dispatcher",
+            "description": {
+              "content": "All Zoho Sheet Data API operations are dispatched via POST to the resource URL. The specific operation is controlled by the `method` form parameter. The resource_id is the unique identifier of the spreadsheet (workbook).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":resource_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) Unique identifier of the Zoho Sheet workbook (resource_id from the spreadsheet URL)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "ZohoSheet.dataAPI.READ ZohoSheet.dataAPI.UPDATE"
+                },
+                {
+                  "key": "redirect_uri",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://accounts.zoho.com/oauth/v2/auth"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "method",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "worksheet_name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "header_row",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_row_index",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "row_count",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_column_index",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "column_count",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2376d5c1-793b-4de2-811e-554ef583e3fa",
+              "name": "Successful API response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) Unique identifier of the Zoho Sheet workbook (resource_id from the spreadsheet URL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "method",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "worksheet_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "header_row",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_row_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "row_count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_column_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "column_count",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"failure\",\n  \"spreadsheet_name\": \"string\",\n  \"worksheet_name\": \"string\",\n  \"header_row\": 8814,\n  \"records\": [\n    {\n      \"key_0\": 3307\n    },\n    {\n      \"key_0\": 9506.132216398908,\n      \"key_1\": 2407.0841518030284\n    }\n  ],\n  \"total_row_count\": 3478,\n  \"worksheet_list\": [\n    {\n      \"sheet_name\": \"string\",\n      \"sheet_index\": 8593\n    },\n    {\n      \"sheet_name\": \"string\",\n      \"sheet_index\": 7758\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85c019b6-6089-41cf-afda-7eaa24348bcf",
+              "name": "Bad request - missing or invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) Unique identifier of the Zoho Sheet workbook (resource_id from the spreadsheet URL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "method",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "worksheet_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "header_row",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_row_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "row_count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_column_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "column_count",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"failure\",\n  \"error_code\": 2862,\n  \"error_message\": \"Workbook not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0379e791-4b91-44fb-a571-96ead214c66f",
+              "name": "Unauthorized - invalid or expired OAuth token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) Unique identifier of the Zoho Sheet workbook (resource_id from the spreadsheet URL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "method",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "worksheet_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "header_row",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_row_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "row_count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_column_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "column_count",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"failure\",\n  \"error_code\": 2862,\n  \"error_message\": \"Workbook not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d0c2b238-cf98-45ec-9960-8dfb620b2a74",
+              "name": "Forbidden - insufficient scope or permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) Unique identifier of the Zoho Sheet workbook (resource_id from the spreadsheet URL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "method",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "worksheet_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "header_row",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_row_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "row_count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_column_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "column_count",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"failure\",\n  \"error_code\": 2862,\n  \"error_message\": \"Workbook not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5faeeefc-7b8d-4ada-a9d7-24c00852713a",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) Unique identifier of the Zoho Sheet workbook (resource_id from the spreadsheet URL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "method",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "worksheet_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "header_row",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_row_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "row_count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_column_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "column_count",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"failure\",\n  \"error_code\": 2862,\n  \"error_message\": \"Workbook not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb50613d-541c-4757-9c86-83a84ff2aba0",
+              "name": "Rate limit exceeded - API calls blocked for 5 minutes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) Unique identifier of the Zoho Sheet workbook (resource_id from the spreadsheet URL)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "method",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "worksheet_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "header_row",
+                      "value": "1"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_row_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "row_count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_column_index",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "column_count",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"failure\",\n  \"error_code\": 2862,\n  \"error_message\": \"Workbook not found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sheet.zoho.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "ZohoSheet.dataAPI.READ ZohoSheet.dataAPI.UPDATE"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://accounts.zoho.com/oauth/v2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://accounts.zoho.com/oauth/v2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.zoho.com/oauth/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4366ff56-eb24-44ae-8419-e88b6f845156",
+    "name": "Zoho Sheet Data Workbook API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for reading, writing, and manipulating Zoho Sheet spreadsheet data. Supports workbook management, worksheet operations, cell content manipulation, chart management, tabular data operations, pivot tables, and merge templates. Authentication uses OAuth 2.0 with scopes for read and update access. All data API requests use POST with a method parameter to specify the operation.\n\n\nContact Support:\n Name: Zoho Sheet Support",
+      "type": "text/plain"
+    }
+  }
+}

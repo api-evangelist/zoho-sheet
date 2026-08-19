@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Zoho Sheet Data Workbook API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://accounts.zoho.com/oauth/v3/device/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workbook",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Zoho Sheet Data API dispatcher",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheet.zoho.com/api/v2/:resource_id",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the Zoho Sheet workbook (resource_id from the spreadsheet URL)"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://accounts.zoho.com/oauth/v3/device/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "All Zoho Sheet Data API operations are dispatched via POST to the resource URL. The specific operation is controlled by the `method` form parameter. The resource_id is the unique identifier of the spreadsheet (workbook).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
