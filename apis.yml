@@ -1,6 +1,18 @@
 aid: zoho-sheet
 name: Zoho Sheet
 description: Online spreadsheet application with a REST API for reading, writing, and manipulating spreadsheet data, cells, formulas, and exporting to various formats. The Zoho Sheet Data API v2 supports workbook management, worksheet operations, cell content manipulation, chart management, tabular data operations, pivot tables, and merge templates. Authentication uses OAuth 2.0 with scopes for read and update access.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
