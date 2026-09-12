@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Zoho Sheet Data Workbook API
   description: 'REST API for reading, writing, and manipulating Zoho Sheet spreadsheet data. Supports workbook management, worksheet operations, cell content manipulation, chart management, tabular data operations, pivot tables, and merge templates. Authentication uses OAuth 2.0 with scopes for read and update access. All data API requests use POST with a method parameter to specify the operation.
@@ -123,128 +123,6 @@ components:
         criteria:
           type: string
           description: JSON string filter criteria identifying rows to update or delete
-    DeleteWorksheetRequest:
-      type: object
-      description: Request parameters for deleting a worksheet
-      required:
-      - method
-      - worksheet_name
-      properties:
-        method:
-          type: string
-          enum:
-          - worksheet.delete
-          description: API method identifier for deleting a worksheet
-        worksheet_name:
-          type: string
-          description: Name of the worksheet to delete
-    ReadSpreadsheetRequest:
-      type: object
-      description: Request parameters for reading spreadsheet cell data
-      required:
-      - method
-      - worksheet_name
-      properties:
-        method:
-          type: string
-          enum:
-          - worksheet.records.fetch
-          description: API method identifier for reading worksheet records
-        worksheet_name:
-          type: string
-          description: Name of the worksheet to read from
-        header_row:
-          type: integer
-          description: Row number to treat as header (1-indexed)
-          default: 1
-        start_row_index:
-          type: integer
-          description: Row index to start reading from (1-indexed)
-        row_count:
-          type: integer
-          description: Number of rows to read
-        start_column_index:
-          type: integer
-          description: Column index to start reading from (1-indexed)
-        column_count:
-          type: integer
-          description: Number of columns to read
-    ErrorResponse:
-      type: object
-      description: Error response from Zoho Sheet Data API
-      properties:
-        status:
-          type: string
-          enum:
-          - failure
-          description: Always "failure" for error responses
-        error_code:
-          type: integer
-          description: Numeric error code
-          example: 2862
-        error_message:
-          type: string
-          description: Human-readable error description
-      example:
-        status: failure
-        error_code: 2862
-        error_message: Workbook not found
-    GetSpreadsheetContentRequest:
-      type: object
-      description: Request parameters for getting spreadsheet content/metadata
-      required:
-      - method
-      properties:
-        method:
-          type: string
-          enum:
-          - workbook.data.get
-          description: API method identifier for getting workbook content
-        worksheet_name:
-          type: string
-          description: Optional worksheet name to filter content
-    AddWorksheetRequest:
-      type: object
-      description: Request parameters for adding a new worksheet
-      required:
-      - method
-      - new_sheet_name
-      properties:
-        method:
-          type: string
-          enum:
-          - worksheet.create
-          description: API method identifier for creating a worksheet
-        new_sheet_name:
-          type: string
-          description: Name for the new worksheet
-        sheet_index:
-          type: integer
-          description: Position index for the new worksheet
-    WriteSpreadsheetRequest:
-      type: object
-      description: Request parameters for writing cell data to a spreadsheet
-      required:
-      - method
-      - worksheet_name
-      - cell_data
-      properties:
-        method:
-          type: string
-          enum:
-          - worksheet.records.add
-          - worksheet.records.update
-          description: API method identifier for writing worksheet records
-        worksheet_name:
-          type: string
-          description: Name of the worksheet to write to
-        header_row:
-          type: integer
-          description: Row number treated as header (1-indexed)
-          default: 1
-        cell_data:
-          type: string
-          description: JSON string array of row data objects to write
     ReadTabularDataRequest:
       type: object
       description: Request parameters for reading tabular (structured) data
@@ -278,25 +156,6 @@ components:
         row_count:
           type: integer
           description: Number of rows to return for pagination
-    RenameWorksheetRequest:
-      type: object
-      description: Request parameters for renaming a worksheet
-      required:
-      - method
-      - old_sheet_name
-      - new_sheet_name
-      properties:
-        method:
-          type: string
-          enum:
-          - worksheet.rename
-          description: API method identifier for renaming a worksheet
-        old_sheet_name:
-          type: string
-          description: Current name of the worksheet
-        new_sheet_name:
-          type: string
-          description: New name for the worksheet
     ApiResponse:
       type: object
       description: Standard successful response from Zoho Sheet Data API
@@ -335,6 +194,147 @@ components:
                 type: string
               sheet_index:
                 type: integer
+    AddWorksheetRequest:
+      type: object
+      description: Request parameters for adding a new worksheet
+      required:
+      - method
+      - new_sheet_name
+      properties:
+        method:
+          type: string
+          enum:
+          - worksheet.create
+          description: API method identifier for creating a worksheet
+        new_sheet_name:
+          type: string
+          description: Name for the new worksheet
+        sheet_index:
+          type: integer
+          description: Position index for the new worksheet
+    ReadSpreadsheetRequest:
+      type: object
+      description: Request parameters for reading spreadsheet cell data
+      required:
+      - method
+      - worksheet_name
+      properties:
+        method:
+          type: string
+          enum:
+          - worksheet.records.fetch
+          description: API method identifier for reading worksheet records
+        worksheet_name:
+          type: string
+          description: Name of the worksheet to read from
+        header_row:
+          type: integer
+          description: Row number to treat as header (1-indexed)
+          default: 1
+        start_row_index:
+          type: integer
+          description: Row index to start reading from (1-indexed)
+        row_count:
+          type: integer
+          description: Number of rows to read
+        start_column_index:
+          type: integer
+          description: Column index to start reading from (1-indexed)
+        column_count:
+          type: integer
+          description: Number of columns to read
+    RenameWorksheetRequest:
+      type: object
+      description: Request parameters for renaming a worksheet
+      required:
+      - method
+      - old_sheet_name
+      - new_sheet_name
+      properties:
+        method:
+          type: string
+          enum:
+          - worksheet.rename
+          description: API method identifier for renaming a worksheet
+        old_sheet_name:
+          type: string
+          description: Current name of the worksheet
+        new_sheet_name:
+          type: string
+          description: New name for the worksheet
+    WriteSpreadsheetRequest:
+      type: object
+      description: Request parameters for writing cell data to a spreadsheet
+      required:
+      - method
+      - worksheet_name
+      - cell_data
+      properties:
+        method:
+          type: string
+          enum:
+          - worksheet.records.add
+          - worksheet.records.update
+          description: API method identifier for writing worksheet records
+        worksheet_name:
+          type: string
+          description: Name of the worksheet to write to
+        header_row:
+          type: integer
+          description: Row number treated as header (1-indexed)
+          default: 1
+        cell_data:
+          type: string
+          description: JSON string array of row data objects to write
+    DeleteWorksheetRequest:
+      type: object
+      description: Request parameters for deleting a worksheet
+      required:
+      - method
+      - worksheet_name
+      properties:
+        method:
+          type: string
+          enum:
+          - worksheet.delete
+          description: API method identifier for deleting a worksheet
+        worksheet_name:
+          type: string
+          description: Name of the worksheet to delete
+    GetSpreadsheetContentRequest:
+      type: object
+      description: Request parameters for getting spreadsheet content/metadata
+      required:
+      - method
+      properties:
+        method:
+          type: string
+          enum:
+          - workbook.data.get
+          description: API method identifier for getting workbook content
+        worksheet_name:
+          type: string
+          description: Optional worksheet name to filter content
+    ErrorResponse:
+      type: object
+      description: Error response from Zoho Sheet Data API
+      properties:
+        status:
+          type: string
+          enum:
+          - failure
+          description: Always "failure" for error responses
+        error_code:
+          type: integer
+          description: Numeric error code
+          example: 2862
+        error_message:
+          type: string
+          description: Human-readable error description
+      example:
+        status: failure
+        error_code: 2862
+        error_message: Workbook not found
   securitySchemes:
     oauthToken:
       type: oauth2
