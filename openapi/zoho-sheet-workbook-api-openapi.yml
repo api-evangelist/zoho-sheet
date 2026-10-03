@@ -119,68 +119,6 @@ components:
         cell_data:
           type: string
           description: JSON string array of row data objects to write
-    ErrorResponse:
-      type: object
-      description: Error response from Zoho Sheet Data API
-      properties:
-        status:
-          type: string
-          enum:
-          - failure
-          description: Always "failure" for error responses
-        error_code:
-          type: integer
-          description: Numeric error code
-          example: 2862
-        error_message:
-          type: string
-          description: Human-readable error description
-      example:
-        status: failure
-        error_code: 2862
-        error_message: Workbook not found
-    AddWorksheetRequest:
-      type: object
-      description: Request parameters for adding a new worksheet
-      required:
-      - method
-      - new_sheet_name
-      properties:
-        method:
-          type: string
-          enum:
-          - worksheet.create
-          description: API method identifier for creating a worksheet
-        new_sheet_name:
-          type: string
-          description: Name for the new worksheet
-        sheet_index:
-          type: integer
-          description: Position index for the new worksheet
-    WriteTabularDataRequest:
-      type: object
-      description: Request parameters for writing tabular data
-      required:
-      - method
-      - worksheet_name
-      - json_data
-      properties:
-        method:
-          type: string
-          enum:
-          - tabular_range.records.add
-          - tabular_range.records.update
-          - tabular_range.records.delete
-          description: API method identifier for modifying tabular range records
-        worksheet_name:
-          type: string
-          description: Name of the worksheet containing the tabular data
-        json_data:
-          type: string
-          description: JSON string of row data to add or update
-        criteria:
-          type: string
-          description: JSON string filter criteria identifying rows to update or delete
     ReadTabularDataRequest:
       type: object
       description: Request parameters for reading tabular (structured) data
@@ -233,21 +171,6 @@ components:
         new_sheet_name:
           type: string
           description: New name for the worksheet
-    DeleteWorksheetRequest:
-      type: object
-      description: Request parameters for deleting a worksheet
-      required:
-      - method
-      - worksheet_name
-      properties:
-        method:
-          type: string
-          enum:
-          - worksheet.delete
-          description: API method identifier for deleting a worksheet
-        worksheet_name:
-          type: string
-          description: Name of the worksheet to delete
     ApiResponse:
       type: object
       description: Standard successful response from Zoho Sheet Data API
@@ -286,6 +209,64 @@ components:
                 type: string
               sheet_index:
                 type: integer
+    WriteTabularDataRequest:
+      type: object
+      description: Request parameters for writing tabular data
+      required:
+      - method
+      - worksheet_name
+      - json_data
+      properties:
+        method:
+          type: string
+          enum:
+          - tabular_range.records.add
+          - tabular_range.records.update
+          - tabular_range.records.delete
+          description: API method identifier for modifying tabular range records
+        worksheet_name:
+          type: string
+          description: Name of the worksheet containing the tabular data
+        json_data:
+          type: string
+          description: JSON string of row data to add or update
+        criteria:
+          type: string
+          description: JSON string filter criteria identifying rows to update or delete
+    ErrorResponse:
+      type: object
+      description: Error response from Zoho Sheet Data API
+      properties:
+        status:
+          type: string
+          enum:
+          - failure
+          description: Always "failure" for error responses
+        error_code:
+          type: integer
+          description: Numeric error code
+          example: 2862
+        error_message:
+          type: string
+          description: Human-readable error description
+      example:
+        status: failure
+        error_code: 2862
+        error_message: Workbook not found
+    GetSpreadsheetContentRequest:
+      type: object
+      description: Request parameters for getting spreadsheet content/metadata
+      required:
+      - method
+      properties:
+        method:
+          type: string
+          enum:
+          - workbook.data.get
+          description: API method identifier for getting workbook content
+        worksheet_name:
+          type: string
+          description: Optional worksheet name to filter content
     ReadSpreadsheetRequest:
       type: object
       description: Request parameters for reading spreadsheet cell data
@@ -317,20 +298,39 @@ components:
         column_count:
           type: integer
           description: Number of columns to read
-    GetSpreadsheetContentRequest:
+    DeleteWorksheetRequest:
       type: object
-      description: Request parameters for getting spreadsheet content/metadata
+      description: Request parameters for deleting a worksheet
       required:
       - method
+      - worksheet_name
       properties:
         method:
           type: string
           enum:
-          - workbook.data.get
-          description: API method identifier for getting workbook content
+          - worksheet.delete
+          description: API method identifier for deleting a worksheet
         worksheet_name:
           type: string
-          description: Optional worksheet name to filter content
+          description: Name of the worksheet to delete
+    AddWorksheetRequest:
+      type: object
+      description: Request parameters for adding a new worksheet
+      required:
+      - method
+      - new_sheet_name
+      properties:
+        method:
+          type: string
+          enum:
+          - worksheet.create
+          description: API method identifier for creating a worksheet
+        new_sheet_name:
+          type: string
+          description: Name for the new worksheet
+        sheet_index:
+          type: integer
+          description: Position index for the new worksheet
   securitySchemes:
     oauthToken:
       type: oauth2
