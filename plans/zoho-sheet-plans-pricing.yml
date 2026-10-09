@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: Zoho Sheet Plans and Pricing
 description: Zoho Sheet is included as part of the Zoho Workplace suite. The following plans govern access to Zoho Sheet and its API capabilities.
 url: https://www.zoho.com/workplace/pricing.html
@@ -64,3 +68,40 @@ plans:
       - Custom storage and user limits
       - Full Zoho Sheet Data API access
       - Enterprise support
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units:
+  - negotiated
+  plans:
+  - name: Mail Free
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - other
+    periods: []
+  - name: Workplace Standard
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods: []
+  - name: Workplace Professional
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods: []
+  - name: Workplace Enterprise
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - negotiated
+    periods: []
