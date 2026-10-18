@@ -54,3 +54,16 @@
     builder: Pipedream repo (component)
   status: not-a-workflow
   arazzo: null
+- slug: zoho-sheet-google-workspace-own
+  label: Google Workspace (own)
+  partner: google-workspace
+  partner_name: Google Workspace (own)
+  category: Google Workspace app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://workspace.google.com/marketplace/app/zoho_sheet/848301886308
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
